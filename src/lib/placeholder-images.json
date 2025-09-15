@@ -1,3 +1,95 @@
+
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "1",
+      "description": "A woman smiling warmly, with a blurred background of a park.",
+      "imageUrl": "https://picsum.photos/seed/prof1/400/400",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "2",
+      "description": "A man in a coffee shop, looking thoughtfully out the window.",
+      "imageUrl": "https://picsum.photos/seed/prof2/400/400",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "3",
+      "description": "A person hiking on a mountain trail, with a scenic view.",
+      "imageUrl": "https://picsum.photos/seed/prof3/400/400",
+      "imageHint": "person hiking"
+    },
+    {
+      "id": "4",
+      "description": "A woman reading a book in a cozy library.",
+      "imageUrl": "https://picsum.photos/seed/prof4/400/400",
+      "imageHint": "woman reading"
+    },
+    {
+      "id": "5",
+      "description": "A man playing a guitar on a sunny afternoon.",
+      "imageUrl": "https://picsum.photos/seed/prof5/400/400",
+      "imageHint": "man guitar"
+    },
+    {
+      "id": "6",
+      "description": "A woman laughing with friends at an outdoor cafe.",
+      "imageUrl": "https://picsum.photos/seed/prof6/400/400",
+      "imageHint": "woman laughing"
+    },
+    {
+      "id": "7",
+      "description": "A man working on a laptop in a modern office.",
+      "imageUrl": "https://picsum.photos/seed/prof7/400/400",
+      "imageHint": "man office"
+    },
+    {
+      "id": "8",
+      "description": "A person painting on a canvas in an art studio.",
+      "imageUrl": "https://picsum.photos/seed/prof8/400/400",
+      "imageHint": "person painting"
+    },
+    {
+      "id": "9",
+      "description": "A woman doing yoga on a beach at sunrise.",
+      "imageUrl": "https://picsum.photos/seed/prof9/400/400",
+      "imageHint": "woman yoga"
+    },
+    {
+      "id": "10",
+      "description": "A man cooking in a bright, modern kitchen.",
+      "imageUrl": "https://picsum.photos/seed/prof10/400/400",
+      "imageHint": "man cooking"
+    },
+    {
+      "id": "11",
+      "description": "A person walking a dog in a city park.",
+      "imageUrl": "https://picsum.photos/seed/prof11/400/400",
+      "imageHint": "person dog"
+    },
+    {
+      "id": "12",
+      "description": "A smiling woman in professional attire.",
+      "imageUrl": "https://picsum.photos/seed/prof12/400/400",
+      "imageHint": "woman professional"
+    },
+    {
+      "id": "13",
+      "description": "Photo of a woman hiking.",
+      "imageUrl": "https://picsum.photos/seed/prof13/600/800",
+      "imageHint": "woman hiking"
+    },
+    {
+      "id": "14",
+      "description": "Photo of a woman at a gallery.",
+      "imageUrl": "https://picsum.photos/seed/prof14/600/800",
+      "imageHint": "woman gallery"
+    },
+    {
+      "id": "15",
+      "description": "Photo of a woman with a backpack.",
+      "imageUrl": "https://picsum.photos/seed/prof15/600/800",
+      "imageHint": "woman travel"
+    }
+  ]
 }
