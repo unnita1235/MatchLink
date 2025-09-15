@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart, MessageSquare, Star, Briefcase, GraduationCap, MapPin, Users, BookOpen, Scaling, Calendar, Rings, Target } from "lucide-react";
+import { Heart, Star, Briefcase, GraduationCap, MapPin, Users, BookOpen, Scaling, Calendar, HeartHandshake, Target } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Watermark from "@/components/watermark";
 
@@ -92,7 +92,7 @@ export default function ProfilePage({ params }: ProfilePageProps) {
 
             <Card>
               <CardHeader>
-                <CardTitle className="font-headline text-lg flex items-center gap-2"><Rings className="text-primary"/> Religion & Family</CardTitle>
+                <CardTitle className="font-headline text-lg flex items-center gap-2"><HeartHandshake className="text-primary"/> Religion & Family</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
                 <div className="flex"><BookOpen className="w-5 h-5 mr-3 text-muted-foreground flex-shrink-0"/><span>{profile.religionInfo.religion}, {profile.religionInfo.caste}</span></div>
