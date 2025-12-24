@@ -1,4 +1,5 @@
 import type { Profile } from './types';
+import { createUserProfile } from './db';
 
 export const profiles: Profile[] = [
   {
@@ -110,7 +111,7 @@ export const profiles: Profile[] = [
       interests: ['Outdoors', 'Music', 'Dogs'],
     },
   },
-    {
+  {
     id: '6',
     name: 'David Chen',
     age: 34,
@@ -216,3 +217,16 @@ export const profiles: Profile[] = [
     },
   },
 ];
+
+export async function seedProfiles() {
+  console.log('Seeding profiles...');
+  for (const profile of profiles) {
+    try {
+      await createUserProfile(profile.id, profile);
+      console.log(`Seeded profile: ${profile.name}`);
+    } catch (error) {
+      console.error(`Error seeding profile ${profile.name}:`, error);
+    }
+  }
+  console.log('Seeding complete!');
+}

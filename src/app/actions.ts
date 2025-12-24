@@ -1,7 +1,7 @@
 "use server";
 
 import { aiPoweredMatching, type AIPoweredMatchingOutput } from "@/ai/flows/ai-powered-matching";
-import { profiles } from "@/lib/data";
+import { getUserProfile, getAllProfiles } from "@/lib/db";
 import type { Profile } from "@/lib/types";
 
 function profileToString(profile: Profile): string {
@@ -20,10 +20,19 @@ function profileToString(profile: Profile): string {
 `.trim();
 }
 
-export async function findMatchesAction(userId: string): Promise<AIPoweredMatchingOutput> {
+export type EnrichedMatch = {
+  profile: Profile;
+  compatibilityScore: number;
+  reasoning: string;
+};
+
+export async function findMatchesAction(userId: string): Promise<EnrichedMatch[]> {
   try {
-    const currentUser = profiles.find((p) => p.id === userId);
-    const otherUsers = profiles.filter((p) => p.id !== userId);
+    const currentUser = await getUserProfile(userId);
+    const allProfiles = await getAllProfiles(userId);
+
+    // Simple mock filter for "other users" if db returns everything
+    const otherUsers = allProfiles.filter((p) => p.id !== userId);
 
     if (!currentUser) {
       throw new Error("User not found");
@@ -37,11 +46,23 @@ export async function findMatchesAction(userId: string): Promise<AIPoweredMatchi
       otherProfiles: otherProfilesString,
     });
 
-    return result;
+    // Enrich matches with profile data
+    const enrichedMatches = await Promise.all(
+      result.suggestedMatches.map(async (match) => {
+        const profile = otherUsers.find(p => p.id === match.profileId) || await getUserProfile(match.profileId);
+        if (!profile) return null;
+        return {
+          profile,
+          compatibilityScore: match.compatibilityScore,
+          reasoning: match.reasoning,
+        };
+      })
+    );
+
+    return enrichedMatches.filter((m): m is EnrichedMatch => m !== null);
 
   } catch (error) {
     console.error("Error in findMatchesAction:", error);
-    // Return a structured error or re-throw
     throw new Error("Failed to get AI-powered matches. Please try again later.");
   }
 }

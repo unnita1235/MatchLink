@@ -173,13 +173,16 @@ MatchLink/
 
 | Feature | Status | Notes |
 |---------|--------|-------|
-| Landing Page | ✅ Done | Hero, features, CTA |
-| Profile Creation | ✅ Done | Skills, bio, interests |
-| Discover UI | ✅ Done | Swipe interface |
-| Match Algorithm | 📅 Planned | AI integration |
-| Real-time Chat | 📅 Planned | Socket.io |
-| Authentication | 📅 Planned | OAuth |
-| Notifications | 📅 Planned | Email + push |
+| Landing Page | ✅ Done | Hero, features, stats, testimonials, CTA |
+| Authentication | ✅ Done | Firebase email/password auth |
+| Profile Creation | ✅ Done | Full profile with edit form |
+| Discover UI | ✅ Done | Swipe interface with like/pass/superlike |
+| AI Match Algorithm | ✅ Done | Google Genkit with compatibility scoring |
+| Messaging | ✅ Done | Conversations list + chat interface |
+| Connections | ✅ Done | Match management with tabs |
+| Analytics | ✅ Done | Dashboard with charts (recharts) |
+| Settings | ✅ Done | Account, privacy, notifications, dark mode |
+| Dark Mode | ✅ Done | System/light/dark with persistence |
 
 ---
 

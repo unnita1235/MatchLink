@@ -4,6 +4,7 @@ import {
   Sidebar,
   SidebarInset,
 } from "@/components/ui/sidebar";
+import AuthGuard from "@/components/auth-guard";
 
 export default function DashboardLayout({
   children,
@@ -12,10 +13,12 @@ export default function DashboardLayout({
 }) {
   return (
     <SidebarProvider>
-      <Sidebar>
-        <MainSidebar />
-      </Sidebar>
-      <SidebarInset>{children}</SidebarInset>
+      <AuthGuard>
+        <Sidebar>
+          <MainSidebar />
+        </Sidebar>
+        <SidebarInset>{children}</SidebarInset>
+      </AuthGuard>
     </SidebarProvider>
   );
 }

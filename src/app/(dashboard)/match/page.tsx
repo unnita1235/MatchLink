@@ -11,7 +11,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { profiles } from "@/lib/data";
-import type { AIPoweredMatchingOutput } from "@/ai/flows/ai-powered-matching";
 import { Bot, Loader2, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import {
@@ -33,10 +32,12 @@ import {
 import Link from "next/link";
 import Watermark from "@/components/watermark";
 
+import type { EnrichedMatch } from "@/app/actions";
+
 export default function MatchPage() {
   const [selectedUserId, setSelectedUserId] = useState<string | undefined>();
   const [isLoading, setIsLoading] = useState(false);
-  const [matches, setMatches] = useState<AIPoweredMatchingOutput | null>(null);
+  const [matches, setMatches] = useState<EnrichedMatch[] | null>(null);
   const { toast } = useToast();
 
   const handleFindMatches = async () => {
@@ -111,7 +112,7 @@ export default function MatchPage() {
       <main className="flex-1 overflow-y-auto p-4 lg:p-6">
         <div className="max-w-4xl mx-auto">
           {!matches && !isLoading && (
-             <div className="text-center py-20">
+            <div className="text-center py-20">
               <div className="inline-block bg-primary/10 p-4 rounded-full">
                 <Bot className="w-12 h-12 text-primary" />
               </div>
@@ -133,16 +134,16 @@ export default function MatchPage() {
           )}
 
           {matches && (
-             <div>
+            <div>
               <h2 className="text-2xl font-headline font-semibold mb-4">
                 Top Matches for {selectedUserProfile?.name}
               </h2>
               <div className="space-y-6">
-                {matches.suggestedMatches.sort((a,b) => b.compatibilityScore - a.compatibilityScore).map((match) => {
-                  const matchedProfile = profiles.find(p => p.id === match.profileId);
+                {matches.sort((a, b) => b.compatibilityScore - a.compatibilityScore).map((match) => {
+                  const matchedProfile = match.profile;
                   if (!matchedProfile) return null;
                   return (
-                    <Card key={match.profileId} className="overflow-hidden">
+                    <Card key={matchedProfile.id} className="overflow-hidden">
                       <div className="grid grid-cols-1 md:grid-cols-3">
                         <div className="md:col-span-1 relative">
                           <Image
@@ -184,9 +185,9 @@ export default function MatchPage() {
                             </Accordion>
                           </CardContent>
                           <CardFooter>
-                              <Button asChild size="sm">
-                                <Link href={`/profile/${matchedProfile.id}`}>View Full Profile</Link>
-                              </Button>
+                            <Button asChild size="sm">
+                              <Link href={`/profile/${matchedProfile.id}`}>View Full Profile</Link>
+                            </Button>
                           </CardFooter>
                         </div>
                       </div>
