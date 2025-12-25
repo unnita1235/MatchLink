@@ -460,7 +460,7 @@ export default function SettingsPage() {
                 <div className="space-y-0.5">
                   <label className="font-medium">Show Online Status</label>
                   <p className="text-sm text-muted-foreground">
-                    Let others see when you're online.
+                    Let others see when you&apos;re online.
                   </p>
                 </div>
                 <Switch

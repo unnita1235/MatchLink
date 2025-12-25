@@ -136,7 +136,7 @@ export default function DiscoverPage() {
                         <Heart className="h-16 w-16 text-muted-foreground/50 mx-auto mb-4" />
                         <h2 className="text-xl font-semibold mb-2">No More Profiles</h2>
                         <p className="text-muted-foreground mb-4">
-                            You've seen all available profiles. Check back later for new matches!
+                            You&apos;ve seen all available profiles. Check back later for new matches!
                         </p>
                         <Button onClick={() => setCurrentIndex(0)}>
                             <RotateCcw className="mr-2 h-4 w-4" />
@@ -308,7 +308,7 @@ export default function DiscoverPage() {
                 <DialogContent className="text-center max-w-sm">
                     <div className="py-4">
                         <div className="text-6xl mb-4">🎉</div>
-                        <DialogTitle className="text-2xl mb-2">It's a Match!</DialogTitle>
+                        <DialogTitle className="text-2xl mb-2">It&apos;s a Match!</DialogTitle>
                         <DialogDescription className="text-lg">
                             You and {matchedProfile?.name} liked each other!
                         </DialogDescription>

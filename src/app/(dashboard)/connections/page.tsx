@@ -268,7 +268,7 @@ export default function ConnectionsPage() {
                                     <Clock className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
                                     <h3 className="text-lg font-semibold mb-2">No pending sent requests</h3>
                                     <p className="text-muted-foreground">
-                                        Connection requests you've sent will appear here.
+                                        Connection requests you&apos;ve sent will appear here.
                                     </p>
                                 </Card>
                             ) : (

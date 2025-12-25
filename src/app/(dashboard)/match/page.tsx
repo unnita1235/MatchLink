@@ -118,7 +118,7 @@ export default function MatchPage() {
               </div>
               <h2 className="mt-4 text-xl font-semibold font-headline">Ready to Find Matches?</h2>
               <p className="text-muted-foreground mt-2">
-                Select a user from the dropdown above and click "Find AI Matches" to start.
+                Select a user from the dropdown above and click &quot;Find AI Matches&quot; to start.
               </p>
             </div>
           )}
@@ -177,7 +177,7 @@ export default function MatchPage() {
                             </div>
                             <Accordion type="single" collapsible className="w-full mt-4">
                               <AccordionItem value="item-1">
-                                <AccordionTrigger>Why it's a match</AccordionTrigger>
+                                <AccordionTrigger>Why it&apos;s a match</AccordionTrigger>
                                 <AccordionContent className="text-muted-foreground">
                                   {match.reasoning}
                                 </AccordionContent>

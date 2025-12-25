@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Heart, Sparkles, Users, MessageCircle, Shield, BarChart3, Star, ArrowRight, ChevronDown } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
@@ -171,14 +172,14 @@ export default function WelcomePage() {
                     {/* Floating profile cards preview */}
                     <div className="relative w-full max-w-3xl mx-auto h-64 sm:h-80">
                         <div className="absolute left-1/2 -translate-x-1/2 top-0 w-48 sm:w-56 h-64 sm:h-72 bg-card rounded-2xl shadow-2xl transform rotate-[-8deg] transition-transform hover:rotate-[-4deg] overflow-hidden border">
-                            <img src="https://picsum.photos/seed/card1/300/400" alt="Profile" className="w-full h-full object-cover" />
+                            <Image src="https://picsum.photos/seed/card1/300/400" alt="Profile" fill className="object-cover" />
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                                 <p className="text-white font-semibold">Sarah, 28</p>
                                 <p className="text-white/80 text-sm">Software Engineer</p>
                             </div>
                         </div>
                         <div className="absolute left-1/2 -translate-x-1/2 top-4 sm:top-8 w-52 sm:w-64 h-68 sm:h-80 bg-card rounded-2xl shadow-2xl transform rotate-[4deg] transition-transform hover:rotate-[2deg] overflow-hidden border z-10">
-                            <img src="https://picsum.photos/seed/card2/300/400" alt="Profile" className="w-full h-full object-cover" />
+                            <Image src="https://picsum.photos/seed/card2/300/400" alt="Profile" fill className="object-cover" />
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                                 <p className="text-white font-semibold">James, 32</p>
                                 <p className="text-white/80 text-sm">Data Scientist</p>
@@ -213,7 +214,7 @@ export default function WelcomePage() {
                             Why Choose MatchLink?
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            We've built the most advanced matching platform that combines AI intelligence
+                            We&apos;ve built the most advanced matching platform that combines AI intelligence
                             with genuine human connection.
                         </p>
                     </div>
@@ -303,10 +304,12 @@ export default function WelcomePage() {
                                     &quot;{testimonial.quote}&quot;
                                 </p>
                                 <div className="flex items-center gap-3">
-                                    <img
+                                    <Image
                                         src={testimonial.image}
                                         alt={testimonial.name}
-                                        className="w-12 h-12 rounded-full object-cover"
+                                        width={48}
+                                        height={48}
+                                        className="rounded-full object-cover"
                                     />
                                     <div>
                                         <p className="font-semibold text-foreground">{testimonial.name}</p>

@@ -64,6 +64,10 @@ cd MatchLink
 # Install dependencies
 npm install
 
+# Setup environment variables
+cp .env.example .env.local
+# Edit .env.local with your Firebase credentials
+
 # Start development server
 npm run dev
 ```
