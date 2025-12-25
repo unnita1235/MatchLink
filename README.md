@@ -1,115 +1,51 @@
-# 🤝 MatchLink
+# 💕 MatchLink - AI-Powered Matchmaking Platform
 
-[![Status](https://img.shields.io/badge/status-in_development-orange)]()
-[![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://match-link-tau.vercel.app/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-blue)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org)
 
-> **AI-Powered Professional Networking & Matching Platform**
+> An intelligent matchmaking platform with AI-powered compatibility matching, profile management, and subscription packages.
 
-Intelligent networking platform that uses AI algorithms to match professionals based on skills, interests, and career goals. Think LinkedIn meets Tinder with smart recommendations.
+## 🌐 Live Demo
 
----
-
-## 🎯 The Problem
-
-Traditional networking is:
-- 🎲 **Random**: No intelligent matchmaking
-- ⏰ **Time-consuming**: Manual searching through profiles
-- 🤷 **Low-quality connections**: Irrelevant connection requests
-- 📊 **No insights**: Can't see compatibility before connecting
-
-**MatchLink** uses AI to connect you with the right professionals at the right time.
+**URL**: [match-link-tau.vercel.app](https://match-link-tau.vercel.app/)
 
 ---
 
-## ✨ Key Features
+## 📸 Features
 
-### Smart Matching
-- 🧠 **AI-Powered Recommendations**: Machine learning algorithm matches compatible professionals
-- 🎯 **Skill-based Matching**: Connect with complementary or similar skill sets
-- 💼 **Goal Alignment**: Find mentors, collaborators, or co-founders based on objectives
-- 🌍 **Location & Timezone**: Smart filtering for remote work compatibility
+### Profile Discovery
+- Browse user profiles with photos and details
+- Filter by age, location, interests
+- View detailed profile information
 
-### Profile & Discovery
-- 📝 **Rich Profiles**: Skills, experience, interests, availability
-- 🔍 **Advanced Search**: Filter by role, industry, tech stack, location
-- 💬 **Icebreaker Prompts**: AI-generated conversation starters
-- ⭐ **Compatibility Score**: See match percentage before connecting
+### AI Matcher
+- Intelligent compatibility scoring
+- Preference-based recommendations
+- Match suggestions based on interests
 
-### Networking Features
-- 💌 **Swipe Interface**: Tinder-like UX for quick decisions
-- 💬 **Real-time Chat**: Instant messaging with matched connections
-- 📅 **Virtual Coffee**: Schedule 15-min intro calls
-- 🤝 **Mutual Interests**: Discover shared skills and goals
-- 📊 **Networking Analytics**: Track connections, response rates
+### Subscription Packages
+- Multiple tier offerings
+- Premium features for subscribers
+- Secure payment integration (planned)
 
-### Community
-- 🎓 **Skill Circles**: Join groups based on expertise
-- 📚 **Knowledge Sharing**: Post articles, resources
-- 🎤 **Events**: Virtual meetups and webinars
-- 🏆 **Leaderboards**: Active community members
+### Admin Panel
+- User management dashboard
+- Profile moderation tools
+- Analytics and insights
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS + Framer Motion (animations)
-- **UI Components**: shadcn/ui
-- **State Management**: Zustand
-- **Real-time**: Socket.io client
-
-### Backend (Planned)
-- **API**: Next.js API Routes
-- **Database**: PostgreSQL
-- **ORM**: Prisma
-- **Auth**: NextAuth.js (Google, LinkedIn OAuth)
-- **Real-time**: Socket.io server
-- **File Storage**: Cloudinary (profile pictures)
-- **Search**: Algolia / Meilisearch (fast profile search)
-
-### AI/ML (Planned)
-- **Matching Algorithm**: Python microservice
-- **Tech Stack**: FastAPI + scikit-learn
-- **Features**: 
-  - Cosine similarity for skill matching
-  - Collaborative filtering for recommendations
-  - NLP for bio analysis
-- **Model**: Custom trained on professional profiles
-
-### DevOps
-- **Hosting**: Vercel (Frontend), Railway (Backend + ML)
-- **CI/CD**: GitHub Actions
-- **Monitoring**: Posthog (analytics)
-
----
-
-## 📐 System Architecture
-```
-┌─────────────────────────────────────────────┐
-│         Next.js Frontend                     │
-│  (Profiles, Matching, Chat, Discovery)       │
-└──────────────────┬──────────────────────────┘
-                   │
-       ┌───────────┼───────────┐
-       │           │           │
-  ┌────▼────┐ ┌───▼────┐ ┌───▼────┐
-  │  Auth   │ │  API   │ │ Socket │
-  │ Service │ │ Routes │ │  .io   │
-  └────┬────┘ └───┬────┘ └───┬────┘
-       │          │          │
-       └──────────┴──────────┘
-                  │
-      ┌───────────┴───────────┐
-      │                       │
- ┌────▼─────┐          ┌─────▼──────┐
- │PostgreSQL│          │  ML Service│
- │(Profiles)│          │  (Python)  │
- └──────────┘          │  FastAPI   │
-                       └────────────┘
-```
+| Category | Technology |
+|----------|------------|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| UI Components | shadcn/ui |
+| State Management | React Context |
+| Deployment | Vercel |
 
 ---
 
@@ -121,17 +57,14 @@ Traditional networking is:
 
 ### Installation
 ```bash
-# Clone repository
+# Clone the repository
 git clone https://github.com/unnita1235/MatchLink.git
 cd MatchLink
 
 # Install dependencies
 npm install
 
-# Setup environment
-cp .env.example .env.local
-
-# Run development server
+# Start development server
 npm run dev
 ```
 
@@ -140,216 +73,73 @@ Open [http://localhost:3000](http://localhost:3000)
 ---
 
 ## 📁 Project Structure
-```
 MatchLink/
 ├── src/
 │   ├── app/
-│   │   ├── (auth)/              # Login, signup
-│   │   ├── discover/            # Swipe interface
-│   │   ├── matches/             # Your connections
-│   │   ├── profile/             # User profile
-│   │   ├── chat/                # Messaging
-│   │   └── api/                 # API routes
+│   │   ├── page.tsx           # Home/Discover page
+│   │   ├── match/             # AI Matcher
+│   │   ├── packages/          # Subscription plans
+│   │   ├── profile/[id]/      # Profile details
+│   │   └── settings/          # User settings
 │   ├── components/
-│   │   ├── matching/            # Swipe cards
-│   │   ├── profile/             # Profile display
-│   │   ├── chat/                # Chat UI
-│   │   └── ui/                  # shadcn components
-│   ├── lib/
-│   │   ├── matching/            # Matching algorithm
-│   │   ├── socket/              # Socket.io client
-│   │   └── utils/               # Helper functions
-│   ├── store/                   # Zustand stores
-│   └── types/                   # TypeScript types
-└── ml-service/                  # Python ML service (planned)
-    ├── models/                  # Trained models
-    ├── algorithm.py             # Matching logic
-    └── api.py                   # FastAPI endpoints
-```
+│   │   ├── ProfileCard.tsx
+│   │   ├── MatchScore.tsx
+│   │   └── ui/
+│   └── lib/
+│       ├── api.ts
+│       └── types.ts
+└── package.json
 
 ---
 
-## 🎨 Current Implementation Status
+## ✨ Key Features Explained
 
-| Feature | Status | Notes |
-|---------|--------|-------|
-| Landing Page | ✅ Done | Hero, features, stats, testimonials, CTA |
-| Authentication | ✅ Done | Firebase email/password auth |
-| Profile Creation | ✅ Done | Full profile with edit form |
-| Discover UI | ✅ Done | Swipe interface with like/pass/superlike |
-| AI Match Algorithm | ✅ Done | Google Genkit with compatibility scoring |
-| Messaging | ✅ Done | Conversations list + chat interface |
-| Connections | ✅ Done | Match management with tabs |
-| Analytics | ✅ Done | Dashboard with charts (recharts) |
-| Settings | ✅ Done | Account, privacy, notifications, dark mode |
-| Dark Mode | ✅ Done | System/light/dark with persistence |
+### Profile Discovery
+Users can browse through profiles displayed as cards with:
+- Profile photo
+- Name and age
+- Location
+- Quick bio preview
 
----
+### AI Matching Algorithm
+The matching system considers:
+- Age preferences
+- Location proximity
+- Shared interests
+- Compatibility scores
 
-## 🔐 Environment Variables
-```bash
-# Database
-DATABASE_URL="postgresql://..."
-
-# Authentication
-NEXTAUTH_SECRET="your-secret"
-NEXTAUTH_URL="http://localhost:3000"
-GOOGLE_CLIENT_ID="..."
-GOOGLE_CLIENT_SECRET="..."
-LINKEDIN_CLIENT_ID="..."
-LINKEDIN_CLIENT_SECRET="..."
-
-# ML Service
-ML_SERVICE_URL="http://localhost:8000"
-
-# File Upload
-CLOUDINARY_CLOUD_NAME="..."
-CLOUDINARY_API_KEY="..."
-CLOUDINARY_API_SECRET="..."
-
-# Real-time
-SOCKET_SERVER_URL="http://localhost:3001"
-
-# Search
-ALGOLIA_APP_ID="..."
-ALGOLIA_API_KEY="..."
-```
-
----
-
-## 🧪 Matching Algorithm (Planned)
-
-### How It Works
-```python
-# Matching score calculation
-def calculate_match_score(user_a, user_b):
-    # 1. Skill Similarity (40%)
-    skill_score = cosine_similarity(user_a.skills, user_b.skills)
-    
-    # 2. Interest Overlap (30%)
-    interest_score = jaccard_similarity(user_a.interests, user_b.interests)
-    
-    # 3. Career Goal Alignment (20%)
-    goal_score = compare_goals(user_a.goals, user_b.goals)
-    
-    # 4. Availability Match (10%)
-    availability_score = timezone_compatibility(user_a.timezone, user_b.timezone)
-    
-    # Weighted average
-    total_score = (
-        skill_score * 0.4 +
-        interest_score * 0.3 +
-        goal_score * 0.2 +
-        availability_score * 0.1
-    )
-    
-    return total_score * 100  # Convert to percentage
-```
-
-### Recommendation Types
-
-1. **Complementary Skills**: Frontend dev ↔ Backend dev
-2. **Similar Experience**: Both senior engineers looking for co-founders
-3. **Mentor/Mentee**: Experienced dev ↔ Junior dev learning same stack
-4. **Collaboration**: Designers + Developers for side projects
-
----
-
-## 📊 Database Schema (Planned)
-```sql
--- Core Tables
-users (id, name, email, role, bio, location, timezone)
-skills (id, user_id, skill_name, proficiency_level)
-interests (id, user_id, interest_name)
-goals (id, user_id, goal_type, description)
-
--- Matching
-swipes (id, user_id, target_user_id, action, timestamp) -- action: like/pass
-matches (id, user_a_id, user_b_id, match_score, created_at)
-
--- Messaging
-conversations (id, match_id, created_at)
-messages (id, conversation_id, sender_id, content, timestamp, read)
-
--- Analytics
-match_analytics (id, user_id, total_swipes, total_matches, avg_match_score)
-```
+### Admin Dashboard
+Administrators can:
+- View all registered profiles
+- Moderate content
+- Access platform analytics
 
 ---
 
 ## 🎯 Roadmap
 
-### Phase 1 (Current - Month 1-2)
-- [x] Landing page
-- [x] Profile creation UI
-- [x] Swipe interface
-- [ ] Authentication
-- [ ] Database setup
-
-### Phase 2 (Month 3-4)
-- [ ] Basic matching algorithm
-- [ ] Match notifications
-- [ ] Profile search
-- [ ] User settings
-
-### Phase 3 (Month 5-6)
-- [ ] Real-time chat
-- [ ] Video call integration
-- [ ] AI-powered recommendations
-- [ ] Event scheduling
-
-### Phase 4 (Month 7+)
-- [ ] Community features
-- [ ] Skill circles
-- [ ] Analytics dashboard
-- [ ] Mobile app
-
----
-
-## 🏆 Technical Highlights
-
-1. **Swipe Animation**: Smooth Framer Motion gestures
-2. **Real-time Updates**: Instant match notifications via WebSocket
-3. **Intelligent Caching**: Redis for fast profile lookups
-4. **Scalable Architecture**: Microservices ready
-5. **Privacy First**: Users control visibility
-
----
-
-## 📚 Key Learnings & Challenges
-
-### Challenge 1: Cold Start Problem
-**Problem**: New users have no match data
-**Solution**: Use skill/interest similarity + manual preferences
-
-### Challenge 2: Match Quality
-**Problem**: Algorithm matching irrelevant people
-**Solution**: Weighted scoring + user feedback loop to improve
-
-### Challenge 3: Real-time Performance
-**Problem**: Chat lag with many concurrent users
-**Solution**: Socket.io rooms + Redis pub/sub
-
----
-
-## 🎨 Design Inspiration
-
-- Tinder (swipe UX)
-- LinkedIn (professional context)
-- Bumble Bizz (networking focus)
-- Coffee Meets Bagel (curated matches)
+| Feature | Status |
+|---------|--------|
+| Profile browsing | ✅ Complete |
+| Profile details | ✅ Complete |
+| AI matcher page | ✅ Complete |
+| Subscription packages | ✅ Complete |
+| User authentication | 🚧 In Progress |
+| Real-time messaging | 📅 Planned |
+| Video calls | 📅 Planned |
+| Mobile app | 📅 Planned |
 
 ---
 
 ## 🤝 Contributing
 
-Open to feedback and collaboration ideas!
+Contributions are welcome! Please read the contributing guidelines first.
 
 ---
 
 ## 📄 License
 
-MIT License
+MIT License - see LICENSE file for details.
 
 ---
 
@@ -358,15 +148,3 @@ MIT License
 **Unni T A**
 - GitHub: [@unnita1235](https://github.com/unnita1235)
 - Email: unnita1235@gmail.com
-
----
-
-## 🙏 Acknowledgments
-
-- Framer Motion for animations
-- Socket.io for real-time features
-- scikit-learn for ML algorithms
-
----
-
-**Note**: Active development. AI matching algorithm in design phase.
