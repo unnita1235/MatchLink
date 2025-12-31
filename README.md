@@ -1,51 +1,57 @@
-# 💕 MatchLink - AI-Powered Matchmaking Platform
+# MatchLink - Profile Discovery UI
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://match-link-tau.vercel.app/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-blue)](https://www.typescriptlang.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org)
+> A modern profile browsing interface prototype for a matchmaking platform, built with Next.js 15 and TypeScript.
 
-> An intelligent matchmaking platform with AI-powered compatibility matching, profile management, and subscription packages.
-
-## 🌐 Live Demo
-
-**URL**: [match-link-tau.vercel.app](https://match-link-tau.vercel.app/)
+**Status**: 🎨 Frontend Prototype  
+**Live Demo**: https://match-link-tau.vercel.app
 
 ---
 
-## 📸 Features
+## 📸 What This Is
 
-### Profile Discovery
-- Browse user profiles with photos and details
-- Filter by age, location, interests
-- View detailed profile information
+MatchLink is a **frontend UI prototype** that demonstrates a Tinder-like profile browsing experience. It showcases modern web design patterns, responsive layouts, and clean React component architecture.
 
-### AI Matcher
-- Intelligent compatibility scoring
-- Preference-based recommendations
-- Match suggestions based on interests
+**Important**: This is currently a frontend-only demo with hardcoded profile data. No actual matching algorithm, database, or user authentication exists yet.
 
-### Subscription Packages
-- Multiple tier offerings
-- Premium features for subscribers
-- Secure payment integration (planned)
+---
 
-### Admin Panel
-- User management dashboard
-- Profile moderation tools
-- Analytics and insights
+## ✨ Current Features
+
+### What Works Now
+- ✅ **Profile Discovery Page** - Browse 10+ demo profiles
+- ✅ **Profile Detail View** - Detailed profile pages with routing
+- ✅ **Responsive Cards** - Profile cards that work on all devices
+- ✅ **Filter UI** - Filter interface (visual only, no backend)
+- ✅ **Package Display** - Subscription tier cards
+- ✅ **Modern UI/UX** - Clean, professional design
+
+### What's Not Implemented
+- ❌ No user authentication
+- ❌ No database (profiles are hardcoded arrays)
+- ❌ No AI matching algorithm
+- ❌ No messaging system
+- ❌ No payment processing
+- ❌ No data persistence
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Category | Technology |
-|----------|------------|
-| Framework | Next.js 15 (App Router) |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| UI Components | shadcn/ui |
-| State Management | React Context |
-| Deployment | Vercel |
+**Frontend**:
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS
+- React components
+- Dynamic routing
+
+**Deployment**:
+- Vercel
+
+**Planned (Not Yet Implemented)**:
+- Firebase Authentication
+- Firestore Database
+- AI matching logic
+- Payment integration
 
 ---
 
@@ -56,99 +62,174 @@
 - npm or yarn
 
 ### Installation
+
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/unnita1235/MatchLink.git
 cd MatchLink
 
 # Install dependencies
 npm install
 
-# Setup environment variables
-cp .env.example .env.local
-# Edit .env.local with your Firebase credentials
-
 # Start development server
 npm run dev
-```
 
-Open [http://localhost:3000](http://localhost:3000)
+# Open http://localhost:3000
+```
 
 ---
 
 ## 📁 Project Structure
+
+```
 MatchLink/
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx           # Home/Discover page
-│   │   ├── match/             # AI Matcher
-│   │   ├── packages/          # Subscription plans
-│   │   ├── profile/[id]/      # Profile details
-│   │   └── settings/          # User settings
+│   │   ├── page.tsx           # Discovery page (home)
+│   │   ├── profile/[id]/      # Dynamic profile pages
+│   │   ├── match/             # AI Matcher page (UI only)
+│   │   ├── packages/          # Subscription packages
+│   │   └── settings/          # Settings page
 │   ├── components/
-│   │   ├── ProfileCard.tsx
-│   │   ├── MatchScore.tsx
-│   │   └── ui/
+│   │   ├── ui/               # Reusable UI components
+│   │   ├── ProfileCard.tsx   # Profile card component
+│   │   └── FilterPanel.tsx   # Filter sidebar
 │   └── lib/
-│       ├── api.ts
-│       └── types.ts
+│       ├── data.ts           # Hardcoded profile data
+│       └── types.ts          # TypeScript types
 └── package.json
+```
 
 ---
 
-## ✨ Key Features Explained
+## 🎯 What This Project Demonstrates
 
-### Profile Discovery
-Users can browse through profiles displayed as cards with:
-- Profile photo
-- Name and age
-- Location
-- Quick bio preview
+### Frontend Skills
+- Next.js App Router with dynamic routes
+- TypeScript for type safety
+- Responsive design (mobile-first)
+- Component composition
+- Clean code organization
+- Modern UI patterns
 
-### AI Matching Algorithm
-The matching system considers:
-- Age preferences
-- Location proximity
-- Shared interests
-- Compatibility scores
-
-### Admin Dashboard
-Administrators can:
-- View all registered profiles
-- Moderate content
-- Access platform analytics
+### What's Missing
+- No backend server
+- No real user accounts
+- No actual matching algorithm
+- No data storage
+- Demo data only
 
 ---
 
-## 🎯 Roadmap
+## 📊 Demo Data
 
-| Feature | Status |
-|---------|--------|
-| Profile browsing | ✅ Complete |
-| Profile details | ✅ Complete |
-| AI matcher page | ✅ Complete |
-| Subscription packages | ✅ Complete |
-| User authentication | 🚧 In Progress |
-| Real-time messaging | 📅 Planned |
-| Video calls | 📅 Planned |
-| Mobile app | 📅 Planned |
+The app includes 10 hardcoded profiles with:
+- Names and ages
+- Locations
+- Profile photos (from Picsum)
+- Bio text
+- Interests (placeholder)
+
+**Note**: All data is static and resets on page refresh.
 
 ---
 
-## 🤝 Contributing
+## 🔧 Available Scripts
 
-Contributions are welcome! Please read the contributing guidelines first.
+```bash
+npm run dev        # Development server
+npm run build      # Production build
+npm run start      # Production server
+npm run lint       # ESLint check
+```
+
+---
+
+## 📝 Current Limitations
+
+This is a **UI/UX demonstration project**:
+
+1. **Static Data**: All profiles are hardcoded in `/src/lib/data.ts`
+2. **No Backend**: No API, database, or server
+3. **No Authentication**: Login/signup are placeholder pages
+4. **No Matching**: The "AI Matcher" page is visual only
+5. **No Messaging**: No chat or communication features
+6. **Demo Only**: Not suitable for production use
+
+---
+
+## 🗺️ Development Roadmap
+
+### Phase 1 (Current) - UI ✅
+- [x] Profile browsing interface
+- [x] Detail pages with routing
+- [x] Responsive design
+- [x] Filter UI mockup
+
+### Phase 2 (Planned) - Backend
+- [ ] Firebase Authentication setup
+- [ ] Firestore database integration
+- [ ] User profile CRUD operations
+- [ ] Profile photo uploads
+- [ ] Real filter functionality
+
+### Phase 3 (Future) - Features
+- [ ] Basic matching algorithm
+- [ ] Messaging system
+- [ ] Notification system
+- [ ] Payment integration
+- [ ] Advanced AI matching
+
+---
+
+## 🎨 Design Highlights
+
+- **Color Scheme**: Modern gradient backgrounds
+- **Typography**: Clean, readable fonts
+- **Layout**: Card-based grid system
+- **Images**: Picsum Photos placeholders
+- **Responsive**: Mobile, tablet, desktop optimized
 
 ---
 
 ## 📄 License
 
-MIT License - see LICENSE file for details.
+MIT License - Portfolio/Learning Project
 
 ---
 
 ## 👤 Author
 
-**Unni T A**
+**Unni T A**  
+Frontend Developer
+
 - GitHub: [@unnita1235](https://github.com/unnita1235)
 - Email: unnita1235@gmail.com
+
+---
+
+## 🙏 Acknowledgments
+
+- Next.js for the excellent framework
+- Tailwind CSS for styling
+- Picsum Photos for placeholder images
+- Vercel for hosting
+
+---
+
+## 💡 Learning Focus
+
+This project demonstrates my frontend development skills including:
+- React/Next.js proficiency
+- TypeScript usage
+- Responsive design
+- Component architecture
+- Modern UI/UX patterns
+
+Currently learning backend development to add real functionality!
+
+---
+
+**Status**: UI Prototype - Backend development in progress
+
+*Last updated: January 2026*
