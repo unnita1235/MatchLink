@@ -6,8 +6,6 @@ import {
 } from "@/components/ui/sidebar";
 import AuthGuard from "@/components/auth-guard";
 
-export const dynamic = 'force-dynamic';
-
 export default function DashboardLayout({
   children,
 }: {
