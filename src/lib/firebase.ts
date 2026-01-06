@@ -11,9 +11,18 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const auth = getAuth(app);
-const db = getFirestore(app);
+// Initialize Firebase with error handling
+let app, auth, db;
+
+try {
+  // Initialize Firebase app
+  app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db = getFirestore(app);
+} catch (error) {
+  console.error("Firebase initialization failed:", error);
+  // Gracefully handle initialization errors
+  // This allows server-side code to run without Firebase
+}
 
 export { app, auth, db };
