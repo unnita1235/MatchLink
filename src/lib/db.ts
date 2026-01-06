@@ -17,6 +17,7 @@ import type { Profile } from "@/lib/types";
 
 export async function getUserProfile(userId: string): Promise<Profile | null> {
     try {
+            if (!db) return null;
         const docRef = doc(db, "profiles", userId);
         const docSnap = await getDoc(docRef);
 
