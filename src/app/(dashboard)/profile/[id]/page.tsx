@@ -9,6 +9,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Watermark from "@/components/watermark";
 
 export const dynamic = 'force-dynamic';
+export const dynamicParams = false;
 
 type ProfilePageProps = {
   params: Promise<{
