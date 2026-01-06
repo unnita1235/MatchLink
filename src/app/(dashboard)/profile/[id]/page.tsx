@@ -8,6 +8,8 @@ import { Heart, Star, Briefcase, GraduationCap, MapPin, Users, BookOpen, Scaling
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Watermark from "@/components/watermark";
 
+export const dynamic = 'force-dynamic';
+
 type ProfilePageProps = {
   params: Promise<{
     id: string;
