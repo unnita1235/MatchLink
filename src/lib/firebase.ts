@@ -5,8 +5,8 @@ let app: any = undefined;
 let auth: any = undefined;
 let db: any = undefined;
 
-// Only initialize Firebase in browser environment
-if (typeof window !== 'undefined') {
+// Only initialize Firebase in browser environment and when API key is available
+if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
   try {
     const { initializeApp, getApps, getApp } = require('firebase/app');
     const { getAuth } = require('firebase/auth');
@@ -27,6 +27,8 @@ if (typeof window !== 'undefined') {
   } catch (error) {
     console.error('Firebase initialization failed:', error);
   }
+} else if (typeof window !== 'undefined') {
+    console.warn('Firebase API key missing. Firebase services will not be available.');
 }
 
 export { app, auth, db };
