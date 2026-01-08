@@ -175,6 +175,7 @@ export default function DiscoverPage() {
                                 src={currentProfile.photos[0]?.url || "https://picsum.photos/400/500"}
                                 alt={currentProfile.name}
                                 fill
+                                sizes="(max-width: 768px) 100vw, 500px"
                                 className="object-cover"
                                 priority
                             />
@@ -211,8 +212,8 @@ export default function DiscoverPage() {
                                                 <div>
                                                     <h4 className="font-semibold mb-2">Interests</h4>
                                                     <div className="flex flex-wrap gap-2">
-                                                        {currentProfile.interests.map((interest) => (
-                                                            <Badge key={interest} variant="secondary">{interest}</Badge>
+                                                        {currentProfile.interests.map((interest, idx) => (
+                                                            <Badge key={`${interest}-${idx}`} variant="secondary">{interest}</Badge>
                                                         ))}
                                                     </div>
                                                 </div>

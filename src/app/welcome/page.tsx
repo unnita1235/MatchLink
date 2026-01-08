@@ -172,14 +172,14 @@ export default function WelcomePage() {
                     {/* Floating profile cards preview */}
                     <div className="relative w-full max-w-3xl mx-auto h-64 sm:h-80">
                         <div className="absolute left-1/2 -translate-x-1/2 top-0 w-48 sm:w-56 h-64 sm:h-72 bg-card rounded-2xl shadow-2xl transform rotate-[-8deg] transition-transform hover:rotate-[-4deg] overflow-hidden border">
-                            <Image src="https://picsum.photos/seed/card1/300/400" alt="Profile" fill className="object-cover" />
+                            <Image src="https://picsum.photos/seed/card1/300/400" alt="Profile" fill sizes="300px" className="object-cover" />
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                                 <p className="text-white font-semibold">Sarah, 28</p>
                                 <p className="text-white/80 text-sm">Software Engineer</p>
                             </div>
                         </div>
                         <div className="absolute left-1/2 -translate-x-1/2 top-4 sm:top-8 w-52 sm:w-64 h-68 sm:h-80 bg-card rounded-2xl shadow-2xl transform rotate-[4deg] transition-transform hover:rotate-[2deg] overflow-hidden border z-10">
-                            <Image src="https://picsum.photos/seed/card2/300/400" alt="Profile" fill className="object-cover" />
+                            <Image src="https://picsum.photos/seed/card2/300/400" alt="Profile" fill sizes="300px" className="object-cover" />
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                                 <p className="text-white font-semibold">James, 32</p>
                                 <p className="text-white/80 text-sm">Data Scientist</p>

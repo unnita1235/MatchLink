@@ -150,6 +150,7 @@ export default function MatchPage() {
                             alt={matchedProfile.name}
                             width={400}
                             height={400}
+                            sizes="(max-width: 768px) 100vw, 33vw"
                             className="object-cover w-full h-full min-h-[200px]"
                             data-ai-hint={matchedProfile.photos[0].hint}
                           />

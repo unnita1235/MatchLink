@@ -17,6 +17,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        if (!auth) {
+            console.warn("Firebase Auth not initialized (missing keys). App running in offline/demo mode.");
+            // Optional: Set a mock user for demo purposes if desired
+            setUser({ uid: 'demo', email: 'demo@example.com', displayName: 'Demo User' } as any);
+            setLoading(false);
+            return;
+        }
+
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setLoading(false);

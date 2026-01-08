@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${ptSans.variable} ${poppins.variable} font-body antialiased`}>
+      <body className={`${ptSans.variable} ${poppins.variable} font-body antialiased`} suppressHydrationWarning>
         <ThemeProvider defaultTheme="system" storageKey="matchlink-theme">
           <AuthProvider>
             {children}
