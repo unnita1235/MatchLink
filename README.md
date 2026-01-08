@@ -74,11 +74,30 @@ The platform is designed with Indian matrimonial preferences in mind, including 
 | Video Calls | ❌ Not Implemented | No WebRTC integration |
 | Profile Verification | ❌ Not Implemented | No identity verification system |
 
-### Deployment Status
+###  Deployment Status
 
 - **Frontend**: Deployed on Vercel ([Live Demo](https://match-link-tau.vercel.app))
 - **Backend Services**: Firebase (Auth + Firestore)
 - **Alternative Deployment**: Render.yaml configuration included
+
+---
+
+## 📸 Screenshots
+
+### Dashboard - Discover Profiles
+Browse potential matches in a clean, modern grid interface with AI-powered suggestions.
+
+![Discover Profiles Dashboard](screenshots/dashboard.png)
+
+### AI Smart Matching
+AI-powered compatibility matching using Google Gemini to find the best connections based on personality, interests, and preferences.
+
+![AI Matching Interface](screenshots/ai-matching.png)
+
+### Subscription Packages
+Choose from Free, Premium, or VIP tiers with transparent pricing and features.
+
+![Subscription Packages](screenshots/packages.png)
 
 ---
 
