@@ -41,7 +41,6 @@ export default function SignupPage() {
             });
             router.push("/"); // Redirect to onboarding or home
         } catch (error: any) {
-            console.error(error);
             toast({
                 variant: "destructive",
                 title: "Signup failed",

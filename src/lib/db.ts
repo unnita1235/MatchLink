@@ -17,18 +17,16 @@ import type { Profile } from "@/lib/types";
 
 export async function getUserProfile(userId: string): Promise<Profile | null> {
     try {
-            if (!db) return null;
+        if (!db) return null;
         const docRef = doc(db, "profiles", userId);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
             return docSnap.data() as Profile;
         } else {
-            console.log("No such profile!");
             return null;
         }
     } catch (error) {
-        console.error("Error getting user profile:", error);
         throw error;
     }
 }
@@ -42,7 +40,6 @@ export async function createUserProfile(userId: string, profileData: Partial<Pro
             updatedAt: new Date(),
         }, { merge: true });
     } catch (error) {
-        console.error("Error creating/updating user profile:", error);
         throw error;
     }
 }
@@ -55,7 +52,6 @@ export async function updateUserProfile(userId: string, data: Partial<Profile>) 
             updatedAt: new Date(),
         });
     } catch (error) {
-        console.error("Error updating user profile:", error);
         throw error;
     }
 }
@@ -77,7 +73,6 @@ export async function getAllProfiles(excludeUserId?: string): Promise<Profile[]>
 
         return profiles;
     } catch (error) {
-        console.error("Error getting all profiles:", error);
         throw error;
     }
 }

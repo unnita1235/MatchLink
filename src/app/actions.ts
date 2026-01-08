@@ -62,7 +62,6 @@ export async function findMatchesAction(userId: string): Promise<EnrichedMatch[]
     return enrichedMatches.filter((m): m is EnrichedMatch => m !== null);
 
   } catch (error) {
-    console.error("Error in findMatchesAction:", error);
     throw new Error("Failed to get AI-powered matches. Please try again later.");
   }
 }

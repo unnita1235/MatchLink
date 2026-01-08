@@ -219,14 +219,11 @@ export const profiles: Profile[] = [
 ];
 
 export async function seedProfiles() {
-  console.log('Seeding profiles...');
   for (const profile of profiles) {
     try {
       await createUserProfile(profile.id, profile);
-      console.log(`Seeded profile: ${profile.name}`);
     } catch (error) {
-      console.error(`Error seeding profile ${profile.name}:`, error);
+      // Silently continue on error
     }
   }
-  console.log('Seeding complete!');
 }

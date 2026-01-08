@@ -78,7 +78,6 @@ export default function EditProfilePage() {
                     });
                 }
             } catch (error) {
-                console.error("Failed to load profile", error);
                 toast({
                     title: "Error",
                     description: "Failed to load your profile.",
@@ -111,7 +110,6 @@ export default function EditProfilePage() {
             });
             router.push(`/profile/${user.uid}`);
         } catch (error) {
-            console.error("Error updating profile", error);
             toast({
                 title: "Error",
                 description: "Failed to update profile. Please try again.",

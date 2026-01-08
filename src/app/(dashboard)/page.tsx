@@ -27,7 +27,6 @@ export default function DashboardPage() {
         const data = await findMatchesAction(user.uid);
         setMatches(data);
       } catch (error: any) {
-        console.error("Error fetching matches:", error);
         toast({
           variant: "destructive",
           title: "Could not load matches",

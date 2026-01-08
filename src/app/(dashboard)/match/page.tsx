@@ -55,7 +55,6 @@ export default function MatchPage() {
       const result = await findMatchesAction(selectedUserId);
       setMatches(result);
     } catch (error) {
-      console.error(error);
       toast({
         title: "Error Finding Matches",
         description:

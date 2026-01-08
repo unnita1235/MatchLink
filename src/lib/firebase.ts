@@ -25,10 +25,10 @@ if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
     auth = getAuth(app);
     db = getFirestore(app);
   } catch (error) {
-    console.error('Firebase initialization failed:', error);
+    // Firebase initialization failed silently
   }
 } else if (typeof window !== 'undefined') {
-    console.warn('Firebase API key missing. Firebase services will not be available.');
+  console.warn('Firebase API key missing. Firebase services will not be available.');
 }
 
 export { app, auth, db };

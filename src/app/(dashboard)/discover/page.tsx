@@ -49,7 +49,6 @@ export default function DiscoverPage() {
 
                 setProfiles(loadedProfiles);
             } catch (error) {
-                console.error("Error loading profiles:", error);
                 setProfiles(mockProfiles);
             } finally {
                 setLoading(false);
