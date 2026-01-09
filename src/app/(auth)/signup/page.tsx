@@ -31,9 +31,7 @@ export default function SignupPage() {
             await createUserProfile(userCredential.user.uid, {
                 name: name,
                 // Add default values or initial setup here
-                email: email, // Assuming Profile type has email
-                onboardingCompleted: false
-            } as any);
+            });
 
             toast({
                 title: "Account created!",
