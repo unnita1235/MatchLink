@@ -65,7 +65,7 @@ export default function EditProfilePage() {
         const loadProfile = async () => {
             if (!user) return;
             try {
-                const profile = await getUserProfile(user.uid);
+                const profile = await getUserProfile(user.id);
                 if (profile) {
                     form.reset({
                         name: profile.name,
@@ -94,7 +94,7 @@ export default function EditProfilePage() {
         if (!user) return;
         try {
             setLoading(true);
-            await updateUserProfile(user.uid, {
+            await updateUserProfile(user.id, {
                 name: data.name,
                 bio: data.bio,
                 occupation: data.occupation,
@@ -108,7 +108,7 @@ export default function EditProfilePage() {
                 title: "Profile updated",
                 description: "Your changes have been saved successfully.",
             });
-            router.push(`/profile/${user.uid}`);
+            router.push(`/profile/${user.id}`);
         } catch (error) {
             toast({
                 title: "Error",

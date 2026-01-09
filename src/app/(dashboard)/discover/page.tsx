@@ -38,7 +38,7 @@ export default function DiscoverPage() {
                 // Try to load from Firestore first, fallback to mock data
                 let loadedProfiles: Profile[] = [];
                 try {
-                    loadedProfiles = await getAllProfiles(user?.uid);
+                    loadedProfiles = await getAllProfiles(user?.id);
                 } catch {
                     loadedProfiles = mockProfiles;
                 }

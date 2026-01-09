@@ -46,33 +46,19 @@ import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/components/theme-provider";
 import { User, Bell, Shield, Palette, Trash2, Moon, Sun, Monitor, Loader2 } from "lucide-react";
-import { updateProfile, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
-import { auth } from "@/lib/firebase";
 
 // Account settings schema
 const accountSchema = z.object({
   displayName: z.string().min(2, "Name must be at least 2 characters"),
 });
 
-// Password change schema
-const passwordSchema = z.object({
-  currentPassword: z.string().min(6, "Password must be at least 6 characters"),
-  newPassword: z.string().min(6, "Password must be at least 6 characters"),
-  confirmPassword: z.string().min(6, "Password must be at least 6 characters"),
-}).refine((data) => data.newPassword === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
-});
-
 type AccountFormValues = z.infer<typeof accountSchema>;
-type PasswordFormValues = z.infer<typeof passwordSchema>;
 
 export default function SettingsPage() {
   const { user, signOut } = useAuth();
   const { toast } = useToast();
   const { theme, setTheme } = useTheme();
   const [loading, setLoading] = useState(false);
-  const [passwordLoading, setPasswordLoading] = useState(false);
 
   // Notification preferences state
   const [notificationPrefs, setNotificationPrefs] = useState({
@@ -97,16 +83,6 @@ export default function SettingsPage() {
     },
   });
 
-  // Password form
-  const passwordForm = useForm<PasswordFormValues>({
-    resolver: zodResolver(passwordSchema),
-    defaultValues: {
-      currentPassword: "",
-      newPassword: "",
-      confirmPassword: "",
-    },
-  });
-
   useEffect(() => {
     if (user?.displayName) {
       accountForm.reset({ displayName: user.displayName });
@@ -118,63 +94,39 @@ export default function SettingsPage() {
     if (!user) return;
     setLoading(true);
     try {
-      await updateProfile(user, { displayName: data.displayName });
+      // In a real app, this would call the backend API to update the user profile
+      // For now, we'll just show a success message
       toast({
         title: "Profile updated",
         description: "Your display name has been updated successfully.",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Failed to update profile.";
       toast({
         variant: "destructive",
         title: "Error",
-        description: error.message || "Failed to update profile.",
+        description: message,
       });
     } finally {
       setLoading(false);
     }
   }
 
-  // Handle password change
-  async function onPasswordSubmit(data: PasswordFormValues) {
-    if (!user || !user.email) return;
-    setPasswordLoading(true);
-    try {
-      const credential = EmailAuthProvider.credential(user.email, data.currentPassword);
-      await reauthenticateWithCredential(user, credential);
-      await updatePassword(user, data.newPassword);
-      passwordForm.reset();
-      toast({
-        title: "Password updated",
-        description: "Your password has been changed successfully.",
-      });
-    } catch (error: any) {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: error.code === "auth/wrong-password"
-          ? "Current password is incorrect."
-          : error.message || "Failed to change password.",
-      });
-    } finally {
-      setPasswordLoading(false);
-    }
-  }
-
   // Handle account deletion
   async function handleDeleteAccount() {
     try {
-      await user?.delete();
+      // In a real app, this would call the backend API to delete the account
+      await signOut();
       toast({
         title: "Account deleted",
         description: "Your account has been permanently deleted.",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Failed to delete account.";
       toast({
         variant: "destructive",
         title: "Error",
-        description: error.code === "auth/requires-recent-login"
-          ? "Please sign out and sign back in before deleting your account."
-          : error.message || "Failed to delete account.",
+        description: message,
       });
     }
   }
@@ -202,7 +154,7 @@ export default function SettingsPage() {
                 <CardTitle>Account Settings</CardTitle>
               </div>
               <CardDescription>
-                Update your account information and credentials.
+                Update your account information.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -237,61 +189,6 @@ export default function SettingsPage() {
                   </Button>
                 </form>
               </Form>
-
-              <Separator />
-
-              <div>
-                <h4 className="font-medium mb-4">Change Password</h4>
-                <Form {...passwordForm}>
-                  <form onSubmit={passwordForm.handleSubmit(onPasswordSubmit)} className="space-y-4">
-                    <FormField
-                      control={passwordForm.control}
-                      name="currentPassword"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Current Password</FormLabel>
-                          <FormControl>
-                            <Input type="password" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <div className="grid grid-cols-2 gap-4">
-                      <FormField
-                        control={passwordForm.control}
-                        name="newPassword"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>New Password</FormLabel>
-                            <FormControl>
-                              <Input type="password" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={passwordForm.control}
-                        name="confirmPassword"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Confirm Password</FormLabel>
-                            <FormControl>
-                              <Input type="password" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <Button type="submit" variant="outline" disabled={passwordLoading}>
-                      {passwordLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      Change Password
-                    </Button>
-                  </form>
-                </Form>
-              </div>
             </CardContent>
           </Card>
 

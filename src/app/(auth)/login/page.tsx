@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -10,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/context/AuthContext";
+import { ApiError } from "@/lib/api";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
@@ -17,23 +17,27 @@ export default function LoginPage() {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
     const { toast } = useToast();
+    const { login } = useAuth();
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
 
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            await login(email, password);
             toast({
                 title: "Welcome back!",
                 description: "You have successfully logged in.",
             });
             router.push("/");
-        } catch (error: any) {
+        } catch (error) {
+            const message = error instanceof ApiError
+                ? error.message
+                : "Please check your credentials.";
             toast({
                 variant: "destructive",
                 title: "Login failed",
-                description: error.message || "Please check your credentials.",
+                description: message,
             });
         } finally {
             setLoading(false);

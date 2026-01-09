@@ -24,7 +24,7 @@ export default function DashboardPage() {
         setLoading(true);
         // Pass the UID. In a real app, middleware/context handles security, 
         // but passing it to server action works for this hybrid setup too.
-        const data = await findMatchesAction(user.uid);
+        const data = await findMatchesAction(user.id);
         setMatches(data);
       } catch (error: any) {
         toast({

@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -10,7 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { createUserProfile } from "@/lib/db";
+import { useAuth } from "@/context/AuthContext";
+import { ApiError } from "@/lib/api";
 
 export default function SignupPage() {
     const [email, setEmail] = useState("");
@@ -19,32 +18,27 @@ export default function SignupPage() {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
     const { toast } = useToast();
+    const { register } = useAuth();
 
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
 
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
-            // Create initial profile in Firestore
-            await createUserProfile(userCredential.user.uid, {
-                name: name,
-                // Add default values or initial setup here
-                email: email, // Assuming Profile type has email
-                onboardingCompleted: false
-            } as any);
-
+            await register(email, password, name);
             toast({
                 title: "Account created!",
                 description: "Welcome to MatchLink.",
             });
-            router.push("/"); // Redirect to onboarding or home
-        } catch (error: any) {
+            router.push("/"); // Redirect to home or onboarding
+        } catch (error) {
+            const message = error instanceof ApiError
+                ? error.message
+                : "Could not create account.";
             toast({
                 variant: "destructive",
                 title: "Signup failed",
-                description: error.message || "Could not create account.",
+                description: message,
             });
         } finally {
             setLoading(false);
@@ -89,9 +83,11 @@ export default function SignupPage() {
                             id="password"
                             type="password"
                             required
+                            minLength={6}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
+                        <p className="text-xs text-gray-500">Must be at least 6 characters</p>
                     </div>
                 </CardContent>
                 <CardFooter className="flex flex-col space-y-4">
